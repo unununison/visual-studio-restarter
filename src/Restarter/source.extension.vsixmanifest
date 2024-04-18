@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Core.b8916d81-9a4e-4340-a099-6367c72d2ce4" Version="1.0" Language="en-US" Publisher="HP Inc." />
-    <DisplayName>Core</DisplayName>
+    <Identity Id="Restarter.e8d8c599-0e90-4d62-89b0-8173fd0fb47c" Version="1.0" Language="en-US" Publisher="HP Inc." />
+    <DisplayName>Restarter</DisplayName>
     <Description>Empty VSIX Project.</Description>
   </Metadata>
   <Installation>

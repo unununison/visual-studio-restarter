@@ -4,7 +4,7 @@ using System.Threading;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
-namespace Core
+namespace Restarter
 {
 	/// <summary>
 	/// This is the class that implements the package exposed by this assembly.
@@ -24,13 +24,13 @@ namespace Core
 	/// </para>
 	/// </remarks>
 	[PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-	[Guid(CorePackage.PackageGuidString)]
-	public sealed class CorePackage : AsyncPackage
+	[Guid(RestarterPackage.PackageGuidString)]
+	public sealed class RestarterPackage : AsyncPackage
 	{
 		/// <summary>
-		/// CorePackage GUID string.
+		/// RestarterPackage GUID string.
 		/// </summary>
-		public const string PackageGuidString = "cff2e5eb-4793-4241-a828-a609354dbed1";
+		public const string PackageGuidString = "095205d2-f7db-476d-9c5c-23df5f165173";
 
 		#region Package Members
 
