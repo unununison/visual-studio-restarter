@@ -25,6 +25,7 @@ namespace Restarter
 	/// </remarks>
 	[PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
 	[Guid(RestarterPackage.PackageGuidString)]
+	[ProvideMenuResource("Menus.ctmenu", 1)]
 	public sealed class RestarterPackage : AsyncPackage
 	{
 		/// <summary>
@@ -46,6 +47,7 @@ namespace Restarter
 			// When initialized asynchronously, the current thread may be a background thread at this point.
 			// Do any initialization that requires the UI thread after switching to the UI thread.
 			await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+		    await RestartCommand.InitializeAsync(this);
 		}
 
 		#endregion
