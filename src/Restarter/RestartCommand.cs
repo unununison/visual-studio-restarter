@@ -1,11 +1,5 @@
 ﻿using System;
 using System.ComponentModel.Design;
-using System.Diagnostics;
-using System.Globalization;
-using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
@@ -79,29 +73,6 @@ namespace Restarter
 
 			OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
 			Instance = new RestartCommand(package, commandService);
-		}
-
-		/// <summary>
-		/// This function is the callback used to execute the command when the menu item is clicked.
-		/// See the constructor to see how the menu item is associated with this function using
-		/// OleMenuCommandService service and MenuCommand class.
-		/// </summary>
-		/// <param name="sender">Event sender.</param>
-		/// <param name="e">Event args.</param>
-		private void Execute(object sender, EventArgs e)
-		{
-			ThreadHelper.ThrowIfNotOnUIThread();
-			string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-			string title = "RestartCommand";
-
-			// Show a message box to prove we were here
-			VsShellUtilities.ShowMessageBox(
-				_package,
-				message,
-				title,
-				OLEMSGICON.OLEMSGICON_INFO,
-				OLEMSGBUTTON.OLEMSGBUTTON_OK,
-				OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
 		}
 	}
 }

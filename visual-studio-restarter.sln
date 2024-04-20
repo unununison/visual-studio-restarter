@@ -8,6 +8,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DE134E98-F227-4F9E-A59A-C6CF4740CFEC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{0982EC94-D4B9-4042-82A5-EB8C3C25D1E8}"
+	ProjectSection(SolutionItems) = preProject
+		docs\.gitattributes = docs\.gitattributes
+		docs\.gitignore = docs\.gitignore
+		src\Restarter\Resources\LICENSE.txt = src\Restarter\Resources\LICENSE.txt
+		docs\README.md = docs\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restarter", "src\Restarter\Restarter.csproj", "{89612D11-C5FB-477E-BC3E-7219B93488AE}"
 EndProject
