@@ -30,7 +30,7 @@ namespace Restarter
 		/// <summary>
 		/// VS Package that provides this command, not null.
 		/// </summary>
-		private readonly AsyncPackage package;
+		private readonly AsyncPackage _package;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="RestartCommand"/> class.
@@ -40,11 +40,12 @@ namespace Restarter
 		/// <param name="commandService">Command service to add command to, not null.</param>
 		private RestartCommand(AsyncPackage package, OleMenuCommandService commandService)
 		{
-			this.package = package ?? throw new ArgumentNullException(nameof(package));
+			_package = package ?? throw new ArgumentNullException(nameof(package));
+
 			commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
 			var menuCommandID = new CommandID(CommandSet, CommandId);
-			var menuItem = new MenuCommand(this.Restart, menuCommandID);
+			var menuItem = new MenuCommand(Restart, menuCommandID);
 			commandService.AddCommand(menuItem);
 		}
 
@@ -52,29 +53,19 @@ namespace Restarter
 		{
 			ThreadHelper.ThrowIfNotOnUIThread();
 
-			var service = package.GetService<SVsShell, IVsShell4>();
+			var service = _package.GetService<SVsShell, IVsShell4>();
 			service.Restart(0);
 		}
 
 		/// <summary>
 		/// Gets the instance of the command.
 		/// </summary>
-		public static RestartCommand Instance
-		{
-			get;
-			private set;
-		}
+		public static RestartCommand Instance { get; private set; }
 
 		/// <summary>
 		/// Gets the service provider from the owner package.
 		/// </summary>
-		private Microsoft.VisualStudio.Shell.IAsyncServiceProvider ServiceProvider
-		{
-			get
-			{
-				return this.package;
-			}
-		}
+		private IAsyncServiceProvider ServiceProvider => _package;
 
 		/// <summary>
 		/// Initializes the singleton instance of the command.
@@ -105,7 +96,7 @@ namespace Restarter
 
 			// Show a message box to prove we were here
 			VsShellUtilities.ShowMessageBox(
-				this.package,
+				_package,
 				message,
 				title,
 				OLEMSGICON.OLEMSGICON_INFO,
